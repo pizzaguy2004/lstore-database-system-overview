@@ -1,16 +1,16 @@
 # L-Store Database System — Architecture Overview
 ## Project Overview
 This repository provides an architectural and design overview of a database system inspired by L-Store (Lineage-based Data Store) and modern HTAP (Hybrid Transactional/Analytical Processing) systems.
-The original project was developed as part of ECS 165A — Database Systems (UC Davis).
-To respect academic integrity policies, the full implementation remains private.
+The original project was developed as part of ECS 165A: Database Systems at UC Davis.
+In order to respect academic integrity policies, the full implementation remains private.
 This repository documents the system design, architecture, and technical concepts behind the project.
 
 ## Motivation
 Modern organizations require systems that support both:
-- OLTP → High-volume transactional workloads
-- OLAP → Large-scale analytical queries
+- OLTP → Write-Optimized Systems
+- OLAP → Read-Optimized Systems
 Traditionally, these workloads required separate systems and data duplication.
-HTAP databases solve this by combining both workloads into a single unified architecture.
+HTAP databases solve this by combining both workloads into a single unified database system.
 This project explores how such a system can be designed.
 
 # Key Concepts Explored
@@ -22,8 +22,8 @@ This project explores how such a system can be designed.
 Key design ideas:
 - Column-oriented storage
 - Tail pages for updates
-- Lineage tracking
-- Merge process for performance
+- Lineage tracking to see past updates and record versions
+- Merge process for performance (combine updated tail pages into new base page)
 - Multi-version concurrency control
 
 # System Components
@@ -31,14 +31,12 @@ Key design ideas:
 - Columnar data layout
 - Base pages and tail pages
 - Efficient update handling
-- Reduced write amplification
 ## Concurrency Control
 - Multi-version concurrency control (MVCC)
-- Transaction isolation
+- Transaction isolation (Strict Two-Phase Locking)
 - Conflict resolution
 ## Indexing
 - Fast record lookup
-- Support for analytical scans
 - Efficient query execution
 ## Query Processing
 Supports:
@@ -54,16 +52,16 @@ This project provided hands-on experience with:
 - Tradeoffs between OLTP and OLAP workloads
 - Concurrency and consistency challenges
 - Performance vs. complexity decisions
-- Translating research papers into real systems
+- Translating conceptual knowledge of database systems into actual python code
 ## Skills Demonstrated
 - Database architecture
 - Systems design
 - Data structures
-- Performance tradeoff analysis
-- Technical documentation
+- Technical documentation and Commenting
+- Python Coding
 ## Note on Source Code
 The full implementation is kept private to comply with course academic integrity policies.
-Code can be shared with recruiters upon request.
+The full project including all its code can be shared with recruiters upon request.
 
 # Authors
 Nicholas Pinero, Sage Dillemuth(sdillemuth@ucdavis.edu), Iris Yuan(iriyuan@ucdavis.edu), Alvin Guo(allguo@ucdavis.edu), Naomi Cohen(nacohen@ucdavis.edu)
